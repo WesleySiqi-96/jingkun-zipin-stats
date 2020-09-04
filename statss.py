@@ -1,11 +1,10 @@
-import codecs
 import re
 import unicodecsv
 import numpy as np
 from zhconv import convert as cv
 from urllib.request import urlopen
 from xlwt import Workbook
-import os
+
 def pachong2(): #爬取每个曲谱的代码
     global title
     url1 = 'https://gongchepu.net/list/published/'  # input('url?')
@@ -21,7 +20,6 @@ def pachong2(): #爬取每个曲谱的代码
     for i in match1:
         file.write(i+'\n')
     file.close()
-
 
 def qupu():
     zidict = {}
@@ -66,7 +64,6 @@ def qupu():
         for key, value in zidict.items():
             print(key,value)
             writer.writerow([key,value])
-
 
 def jiantuan():
     csvFile = open("字频.csv", "rb")
@@ -175,9 +172,6 @@ def jiantuan():
 
     wb.save('昆曲入声及尖团统计.xls')
 
-
-
-
 def jiantuan2(): #尖团字表转换
     jian=open('jian.txt','r',encoding='utf-8-sig')
     jianzi=jian.read()
@@ -205,6 +199,8 @@ def jiantuan2(): #尖团字表转换
     rushengzi2.write(rushengzi)
     rushengzi2.close()
 
-
-qupu()
-jiantuan()
+#执行顺序
+#pachong2()已经有了
+#jiantuan2()也有了
+qupu()#字频统计
+jiantuan()#尖团，入声分析

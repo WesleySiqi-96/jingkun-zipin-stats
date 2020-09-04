@@ -1,16 +1,9 @@
-import codecs
 import re
 import unicodecsv
 import numpy as np
-import matplotlib.pyplot as p
-import matplotlib as plt
-from matplotlib.backends.backend_pdf import PdfPages
-from matplotlib.path import Path
 from urllib.request import urlopen
-import xlwt
 from xlwt import Workbook
 import os
-
 
 def pachong2():
     global title
@@ -63,6 +56,7 @@ def juben():
         #         zidict[zi]+=1
         #     else:
         #         zidict[zi]=1
+
 def statss():
     zidict = {}
     allf=os.listdir('C:/Users/wesley/Google drive/Sync/京昆/pdf/昆/简谱/python/xikao/')
@@ -129,4 +123,9 @@ def jianzi2():
             n1 += 1
 
     wb.save('京剧尖团统计.xls')
-jianzi2()
+
+#执行顺序
+#pachong2() #有了
+#juben() #也有了
+statss()#字频统计
+jianzi2()#尖团分析
