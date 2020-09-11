@@ -11,8 +11,6 @@ def qupu():
     file = open('./data/昆曲曲谱代码.txt', 'r')
     dirclist=file.readlines()
     for dirc in dirclist:
-        print(dirc)
-
         url1='https://gongchepu.net'+dirc
         html = urlopen(
             url1
@@ -39,13 +37,13 @@ def qupu():
                 zidict[zi]+=1
             else:
                 zidict[zi]=1
-    with open('./output/昆曲字频.csv', 'wb') as csvfile:
+    with open('./统计结果/昆曲字频.csv', 'wb') as csvfile:
         writer = unicodecsv.writer(csvfile,encoding='utf-8-sig')
         for key, value in zidict.items():
             writer.writerow([key,value])
 
 def jiantuan():
-    csvFile = open("./output/昆曲字频.csv", "rb")
+    csvFile = open("./统计结果/昆曲字频.csv", "rb")
     reader = unicodecsv.reader(csvFile,encoding='utf-8-sig')
     zidict = []
     for item in reader:
@@ -104,7 +102,6 @@ def jiantuan():
                 else:
                     st1.write(n1+1, 4, round(freq,2))
                 n1+=1
-                print(i,isjian(i),isru(i),'频率',round(freq,2))
 
         if isjian(i) in ['尖','团'] and n2<501:
             st2.write(n2 + 1, 0, n2)
@@ -128,7 +125,7 @@ def jiantuan():
 
 
 
-    wb.save('昆曲入声及尖团统计.xls')
+    wb.save('./统计结果/昆曲入声及尖团统计.xls')
 
 
 #执行顺序

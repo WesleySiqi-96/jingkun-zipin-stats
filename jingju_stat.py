@@ -18,13 +18,13 @@ def statss():
             else:
                 zidict[cha] = 1
         file.close()
-    with open('./output/戏考字频.csv', 'wb') as csvfile:
+    with open('./统计结果/戏考字频.csv', 'wb') as csvfile:
         writer = unicodecsv.writer(csvfile, encoding='utf-8-sig')
         for key, value in zidict.items():
             writer.writerow([key, value])
 
 def jianzi2():
-    csvFile = open("./output/戏考字频.csv", "rb")
+    csvFile = open("./统计结果/戏考字频.csv", "rb")
     reader = unicodecsv.reader(csvFile, encoding='utf-8-sig')
     zidict = []
     for item in reader:
@@ -58,7 +58,7 @@ def jianzi2():
                 st1.write(n1 + 1, 3, round(freq, 2))
             n1 += 1
 
-    wb.save('京剧尖团统计.xls')
+    wb.save('./统计结果/京剧尖团统计.xls')
 
 
 statss()#字频统计
