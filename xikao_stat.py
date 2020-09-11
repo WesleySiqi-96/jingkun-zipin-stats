@@ -1,7 +1,5 @@
-import re
 import unicodecsv
 import numpy as np
-from urllib.request import urlopen
 from xlwt import Workbook
 import os
 from pan_ding import isjian
